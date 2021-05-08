@@ -20,11 +20,7 @@
     </viewAttributes>
     <calculatedViewAttributes/>
     <restrictedViewAttributes/>
-    <input node="XSAPACTICE2.firsthanadb::cdstable.table">
-      <mapping xsi:type="Calculation:AttributeMapping" target="key" source="key"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="field2" source="field2"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="field3" source="field3"/>
-    </input>
+    <input node="XSAPACTICE2.firsthanadb::cdstable.table"/>
   </calculationView>
   <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
     <viewAttributes>
@@ -34,11 +30,7 @@
     </viewAttributes>
     <calculatedViewAttributes/>
     <restrictedViewAttributes/>
-    <input node="Projection_2$$$$XSAPACTICE2.firsthanadb::cdstable.table$$">
-      <mapping xsi:type="Calculation:AttributeMapping" target="key" source="key"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="field2" source="field2"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="field3" source="field3"/>
-    </input>
+    <input node="Projection_2$$$$XSAPACTICE2.firsthanadb::cdstable.table$$"/>
   </calculationView>
   <calculationView xsi:type="Calculation:NonEquiJoinView" id="NonEquiJoin_1" cardinality="CN_N" joinType="leftOuter">
     <viewAttributes>
@@ -58,6 +50,11 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="field2" source="field2"/>
     </input>
     <joinAttribute leftColumn="key" rightColumn="key" operator="LE"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1">
+    <viewAttributes/>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
   </calculationView>
 </calculationViews>
 <logicalModel id="NonEquiJoin_1">
@@ -109,6 +106,11 @@
     <shape modelObjectName="Projection_2" modelObjectNameSpace="NonEquiJoin_1" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="320" y="30"/>
       <rectangleSize width="250"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-197" y="-191"/>
+      <rectangleSize height="30" width="160"/>
     </shape>
   </shapes>
 </layout>
