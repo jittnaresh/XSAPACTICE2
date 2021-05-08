@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="cv1" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="cv1"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="XSAPACTICE2.firsthanadb::cdstable.table">
+    <resourceUri>XSAPACTICE2.firsthanadb::cdstable.table</resourceUri>
+  </DataSource>
+  <DataSource id="Projection_2$$$$XSAPACTICE2.firsthanadb::cdstable.table$$">
+    <resourceUri>XSAPACTICE2.firsthanadb::cdstable.table</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="key"/>
+      <viewAttribute id="field2"/>
+      <viewAttribute id="field3"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="XSAPACTICE2.firsthanadb::cdstable.table">
+      <mapping xsi:type="Calculation:AttributeMapping" target="key" source="key"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="field2" source="field2"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="field3" source="field3"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+    <viewAttributes>
+      <viewAttribute id="key"/>
+      <viewAttribute id="field2"/>
+      <viewAttribute id="field3"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="Projection_2$$$$XSAPACTICE2.firsthanadb::cdstable.table$$">
+      <mapping xsi:type="Calculation:AttributeMapping" target="key" source="key"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="field2" source="field2"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="field3" source="field3"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:NonEquiJoinView" id="NonEquiJoin_1" cardinality="CN_N" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="key"/>
+      <viewAttribute id="key_1"/>
+      <viewAttribute id="field2"/>
+      <viewAttribute id="field2_1"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="Projection_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="key" source="key"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="field2_1" source="field2"/>
+    </input>
+    <input node="Projection_2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="key_1" source="key"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="field2" source="field2"/>
+    </input>
+    <joinAttribute leftColumn="key" rightColumn="key" operator="LE"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="NonEquiJoin_1">
+  <attributes>
+    <attribute id="key" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="key"/>
+      <keyMapping columnObjectName="NonEquiJoin_1" columnName="key"/>
+    </attribute>
+    <attribute id="key_1" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="key"/>
+      <keyMapping columnObjectName="NonEquiJoin_1" columnName="key_1"/>
+    </attribute>
+    <attribute id="field2" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="field2"/>
+      <keyMapping columnObjectName="NonEquiJoin_1" columnName="field2"/>
+    </attribute>
+    <attribute id="field2_1" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="field2"/>
+      <keyMapping columnObjectName="NonEquiJoin_1" columnName="field2_1"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="false" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-380" y="205"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-143" y="150"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="NonEquiJoin_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-420" y="-176"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="NonEquiJoin_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Projection_2" modelObjectNameSpace="NonEquiJoin_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
