@@ -1,3 +1,16 @@
 ID: XSAPACTICE2
 _schema-version: '2.1'
 version: 0.0.1
+
+modules:
+ - name: firsthanadb
+   type: hdb
+   path: firsthanadb
+   requires:
+    - name: hdi_firsthanadb
+
+resources:
+ - name: hdi_firsthanadb
+   properties:
+      hdi-container-name: ${service-name}
+   type: com.sap.xs.hdi-container
